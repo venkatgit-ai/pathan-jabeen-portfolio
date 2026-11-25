@@ -1,5 +1,5 @@
 {
-  "name": "lokendra-tyagi-portfolio",
+  "name": "pathan-jabeen-portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -30,3 +30,4 @@
     "vite": "^5.4.8"
   }
 }
+

@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Sphere, ContactShadows } from '@react-three/drei';
+import { Float, MeshDistortMaterial, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
 
-// 3D Miniature Stylized Developer Character
-function MiniatureCharacter({ mousePos }: { mousePos: { x: number; y: number } }) {
+// 3D Miniature Stylized Female Biotech & Pharmaceutical Scientist Avatar
+function ScientistCharacter({ mousePos }: { mousePos: { x: number; y: number } }) {
   const groupRef = useRef<THREE.Group>(null);
   const headRef = useRef<THREE.Group>(null);
   const leftArmRef = useRef<THREE.Group>(null);
@@ -13,7 +13,7 @@ function MiniatureCharacter({ mousePos }: { mousePos: { x: number; y: number } }
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
 
-    // Natural idle breathing & subtle swaying
+    // Natural idle breathing & gentle floating sway
     if (groupRef.current) {
       groupRef.current.position.y = -1.2 + Math.sin(t * 1.8) * 0.05;
       groupRef.current.rotation.y = THREE.MathUtils.lerp(
@@ -23,7 +23,7 @@ function MiniatureCharacter({ mousePos }: { mousePos: { x: number; y: number } }
       );
     }
 
-    // Head tracks cursor dynamically
+    // Head smoothly tracks cursor position
     if (headRef.current) {
       headRef.current.rotation.y = THREE.MathUtils.lerp(
         headRef.current.rotation.y,
@@ -37,112 +37,139 @@ function MiniatureCharacter({ mousePos }: { mousePos: { x: number; y: number } }
       );
     }
 
-    // Natural arm movement (typing / gesturing while explaining)
+    // Natural arm movement (holding biotech tablet / scientific gesturing)
     if (leftArmRef.current) {
-      leftArmRef.current.rotation.x = -0.3 + Math.sin(t * 2.5) * 0.1;
-      leftArmRef.current.rotation.z = 0.2 + Math.cos(t * 1.5) * 0.05;
+      leftArmRef.current.rotation.x = -0.35 + Math.sin(t * 2.2) * 0.08;
+      leftArmRef.current.rotation.z = 0.25 + Math.cos(t * 1.4) * 0.04;
     }
     if (rightArmRef.current) {
-      rightArmRef.current.rotation.x = -0.4 + Math.sin(t * 2.8 + 1) * 0.12;
-      rightArmRef.current.rotation.z = -0.25 - Math.cos(t * 1.5) * 0.05;
+      rightArmRef.current.rotation.x = -0.45 + Math.sin(t * 2.6 + 1) * 0.1;
+      rightArmRef.current.rotation.z = -0.25 - Math.cos(t * 1.4) * 0.04;
     }
   });
 
   return (
     <group ref={groupRef} position={[0, -1.2, 0]} scale={[1.1, 1.1, 1.1]}>
-      {/* --- TORSO & JACKET --- */}
+      
+      {/* --- LAB COAT / TECH BLAZER --- */}
       <mesh position={[0, 1.15, 0]}>
-        <cylinderGeometry args={[0.36, 0.32, 0.75, 16]} />
-        <meshStandardMaterial color="#0f172a" roughness={0.4} metalness={0.6} />
+        <cylinderGeometry args={[0.34, 0.38, 0.8, 16]} />
+        <meshStandardMaterial color="#f8fafc" roughness={0.3} metalness={0.2} />
       </mesh>
-      {/* Jacket Accent Lines */}
-      <mesh position={[0, 1.15, 0.22]}>
-        <boxGeometry args={[0.06, 0.65, 0.02]} />
-        <meshStandardMaterial color="#00f0ff" emissive="#00f0ff" emissiveIntensity={0.8} />
+      {/* Lab Coat Inner Top */}
+      <mesh position={[0, 1.25, 0.18]}>
+        <boxGeometry args={[0.16, 0.4, 0.04]} />
+        <meshStandardMaterial color="#0f172a" roughness={0.5} />
       </mesh>
-      {/* Cyber Core Badge on chest */}
-      <mesh position={[0.12, 1.3, 0.2]}>
-        <cylinderGeometry args={[0.04, 0.04, 0.02, 16]} />
-        <meshStandardMaterial color="#9d4edd" emissive="#9d4edd" emissiveIntensity={1.5} />
+      {/* Neon Emerald Trim on Lab Coat (Representing Green Chemistry & Pharma) */}
+      <mesh position={[-0.14, 1.15, 0.19]}>
+        <boxGeometry args={[0.02, 0.75, 0.02]} />
+        <meshStandardMaterial color="#10b981" emissive="#10b981" emissiveIntensity={1.2} />
+      </mesh>
+      <mesh position={[0.14, 1.15, 0.19]}>
+        <boxGeometry args={[0.02, 0.75, 0.02]} />
+        <meshStandardMaterial color="#00f0ff" emissive="#00f0ff" emissiveIntensity={1.2} />
+      </mesh>
+      {/* Pharma Research Badge */}
+      <mesh position={[0.12, 1.35, 0.2]}>
+        <boxGeometry args={[0.06, 0.08, 0.02]} />
+        <meshStandardMaterial color="#9d4edd" emissive="#9d4edd" emissiveIntensity={1.2} />
       </mesh>
 
-      {/* --- LEGS --- */}
+      {/* --- LEGS & TROUSERS --- */}
       {/* Left Leg */}
-      <mesh position={[-0.15, 0.45, 0]}>
-        <cylinderGeometry args={[0.11, 0.09, 0.75, 16]} />
-        <meshStandardMaterial color="#1e293b" roughness={0.7} />
+      <mesh position={[-0.14, 0.42, 0]}>
+        <cylinderGeometry args={[0.1, 0.08, 0.75, 16]} />
+        <meshStandardMaterial color="#1e293b" roughness={0.6} />
       </mesh>
       {/* Left Shoe */}
-      <mesh position={[-0.15, 0.05, 0.06]}>
-        <boxGeometry args={[0.13, 0.1, 0.24]} />
-        <meshStandardMaterial color="#00f0ff" roughness={0.3} metalness={0.8} />
+      <mesh position={[-0.14, 0.05, 0.05]}>
+        <boxGeometry args={[0.11, 0.09, 0.22]} />
+        <meshStandardMaterial color="#0f172a" roughness={0.3} />
       </mesh>
 
       {/* Right Leg */}
-      <mesh position={[0.15, 0.45, 0]}>
-        <cylinderGeometry args={[0.11, 0.09, 0.75, 16]} />
-        <meshStandardMaterial color="#1e293b" roughness={0.7} />
+      <mesh position={[0.14, 0.42, 0]}>
+        <cylinderGeometry args={[0.1, 0.08, 0.75, 16]} />
+        <meshStandardMaterial color="#1e293b" roughness={0.6} />
       </mesh>
       {/* Right Shoe */}
-      <mesh position={[0.15, 0.05, 0.06]}>
-        <boxGeometry args={[0.13, 0.1, 0.24]} />
-        <meshStandardMaterial color="#00f0ff" roughness={0.3} metalness={0.8} />
+      <mesh position={[0.14, 0.05, 0.05]}>
+        <boxGeometry args={[0.11, 0.09, 0.22]} />
+        <meshStandardMaterial color="#0f172a" roughness={0.3} />
       </mesh>
 
-      {/* --- ARMS --- */}
-      {/* Left Arm & Cyber Hand */}
-      <group ref={leftArmRef} position={[-0.42, 1.45, 0]}>
+      {/* --- ARMS & LAB SLEEVES --- */}
+      {/* Left Arm */}
+      <group ref={leftArmRef} position={[-0.38, 1.45, 0]}>
         <mesh position={[0, -0.28, 0]}>
-          <cylinderGeometry args={[0.08, 0.07, 0.55, 16]} />
-          <meshStandardMaterial color="#1e293b" roughness={0.5} />
+          <cylinderGeometry args={[0.075, 0.065, 0.55, 16]} />
+          <meshStandardMaterial color="#f8fafc" roughness={0.3} />
         </mesh>
         {/* Hand */}
         <mesh position={[0, -0.58, 0.05]}>
-          <sphereGeometry args={[0.07, 12, 12]} />
+          <sphereGeometry args={[0.065, 12, 12]} />
           <meshStandardMaterial color="#fcd34d" roughness={0.3} />
         </mesh>
       </group>
 
-      {/* Right Arm & Cyber Hand */}
-      <group ref={rightArmRef} position={[0.42, 1.45, 0]}>
+      {/* Right Arm holding Holographic Lab Glass / Pipette */}
+      <group ref={rightArmRef} position={[0.38, 1.45, 0]}>
         <mesh position={[0, -0.28, 0]}>
-          <cylinderGeometry args={[0.08, 0.07, 0.55, 16]} />
-          <meshStandardMaterial color="#1e293b" roughness={0.5} />
+          <cylinderGeometry args={[0.075, 0.065, 0.55, 16]} />
+          <meshStandardMaterial color="#f8fafc" roughness={0.3} />
         </mesh>
         {/* Hand */}
         <mesh position={[0, -0.58, 0.05]}>
-          <sphereGeometry args={[0.07, 12, 12]} />
+          <sphereGeometry args={[0.065, 12, 12]} />
           <meshStandardMaterial color="#fcd34d" roughness={0.3} />
+        </mesh>
+        {/* Holographic Glowing Micro-Flask */}
+        <mesh position={[0.02, -0.68, 0.12]}>
+          <coneGeometry args={[0.06, 0.12, 16]} />
+          <meshStandardMaterial
+            color="#00f0ff"
+            emissive="#00f0ff"
+            emissiveIntensity={2}
+            transparent
+            opacity={0.85}
+          />
         </mesh>
       </group>
 
-      {/* --- HEAD GROUP --- */}
+      {/* --- HEAD & HAIR (STYLIZED FEMALE SCIENTIST) --- */}
       <group ref={headRef} position={[0, 1.72, 0]}>
         {/* Neck */}
         <mesh position={[0, -0.12, 0]}>
-          <cylinderGeometry args={[0.08, 0.09, 0.15, 16]} />
+          <cylinderGeometry args={[0.07, 0.08, 0.15, 16]} />
           <meshStandardMaterial color="#fcd34d" roughness={0.3} />
         </mesh>
 
         {/* Head Base */}
         <mesh position={[0, 0.1, 0]}>
-          <sphereGeometry args={[0.26, 32, 32]} />
+          <sphereGeometry args={[0.25, 32, 32]} />
           <meshStandardMaterial color="#fcd34d" roughness={0.3} />
         </mesh>
 
-        {/* Stylized Hair */}
-        <mesh position={[0, 0.22, -0.04]}>
-          <sphereGeometry args={[0.27, 24, 24]} />
-          <meshStandardMaterial color="#18181b" roughness={0.8} />
+        {/* Hair - Main Sleek Silhouette */}
+        <mesh position={[0, 0.18, -0.06]}>
+          <sphereGeometry args={[0.28, 24, 24]} />
+          <meshStandardMaterial color="#1c1917" roughness={0.8} />
         </mesh>
-        <mesh position={[0, 0.32, 0.04]}>
-          <coneGeometry args={[0.22, 0.2, 16]} />
-          <meshStandardMaterial color="#18181b" roughness={0.8} />
+        {/* Hair - Stylish Ponytail */}
+        <mesh position={[0, 0.22, -0.32]} rotation={[0.4, 0, 0]}>
+          <cylinderGeometry args={[0.08, 0.12, 0.35, 16]} />
+          <meshStandardMaterial color="#1c1917" roughness={0.8} />
+        </mesh>
+        {/* Hair Ribbon / Accent Band */}
+        <mesh position={[0, 0.3, -0.22]} rotation={[0.4, 0, 0]}>
+          <torusGeometry args={[0.09, 0.02, 16, 32]} />
+          <meshStandardMaterial color="#10b981" emissive="#10b981" emissiveIntensity={1} />
         </mesh>
 
-        {/* Cyber Visor / Glasses with Neon Glow */}
-        <mesh position={[0, 0.12, 0.2]}>
-          <boxGeometry args={[0.34, 0.09, 0.1]} />
+        {/* Smart Safety Glasses / Cyber Visor */}
+        <mesh position={[0, 0.11, 0.19]}>
+          <boxGeometry args={[0.32, 0.08, 0.1]} />
           <meshStandardMaterial
             color="#00f0ff"
             emissive="#00f0ff"
@@ -150,45 +177,35 @@ function MiniatureCharacter({ mousePos }: { mousePos: { x: number; y: number } }
             roughness={0.1}
             metalness={0.9}
             transparent
-            opacity={0.88}
+            opacity={0.85}
           />
         </mesh>
-        {/* Visor Glint bar */}
-        <mesh position={[0, 0.12, 0.26]}>
-          <boxGeometry args={[0.26, 0.02, 0.02]} />
-          <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={2.0} />
-        </mesh>
-
-        {/* Cyber Headset Ear Cups */}
-        <mesh position={[-0.28, 0.1, 0]} rotation={[0, 0, Math.PI / 2]}>
-          <cylinderGeometry args={[0.07, 0.07, 0.06, 16]} />
-          <meshStandardMaterial color="#38bdf8" emissive="#0284c7" emissiveIntensity={0.6} />
-        </mesh>
-        <mesh position={[0.28, 0.1, 0]} rotation={[0, 0, Math.PI / 2]}>
-          <cylinderGeometry args={[0.07, 0.07, 0.06, 16]} />
-          <meshStandardMaterial color="#38bdf8" emissive="#0284c7" emissiveIntensity={0.6} />
+        {/* Visor HUD indicator */}
+        <mesh position={[0.08, 0.11, 0.24]}>
+          <boxGeometry args={[0.05, 0.02, 0.01]} />
+          <meshStandardMaterial color="#10b981" emissive="#10b981" emissiveIntensity={2.5} />
         </mesh>
       </group>
 
-      {/* --- HOLOGRAPHIC DATA PEDESTAL --- */}
+      {/* --- MOLECULAR PEDESTAL --- */}
       <mesh position={[0, -0.02, 0]}>
         <cylinderGeometry args={[0.7, 0.85, 0.08, 32]} />
         <meshStandardMaterial color="#0f172a" roughness={0.2} metalness={0.9} />
       </mesh>
       <mesh position={[0, 0.03, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <ringGeometry args={[0.62, 0.68, 32]} />
-        <meshStandardMaterial color="#00f0ff" emissive="#00f0ff" emissiveIntensity={2} />
+        <meshStandardMaterial color="#10b981" emissive="#10b981" emissiveIntensity={2} />
       </mesh>
       <mesh position={[0, 0.03, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <ringGeometry args={[0.42, 0.46, 32]} />
-        <meshStandardMaterial color="#9d4edd" emissive="#9d4edd" emissiveIntensity={1.5} />
+        <meshStandardMaterial color="#00f0ff" emissive="#00f0ff" emissiveIntensity={1.5} />
       </mesh>
     </group>
   );
 }
 
-// Floating Cyber Polyhedra in background
-function FloatingNodes() {
+// Floating Molecular Geometries & Active Formulation Nodes
+function MolecularOrbitals() {
   const meshRef1 = useRef<THREE.Mesh>(null);
   const meshRef2 = useRef<THREE.Mesh>(null);
   const meshRef3 = useRef<THREE.Mesh>(null);
@@ -213,32 +230,35 @@ function FloatingNodes() {
 
   return (
     <>
+      {/* Green Solvent Chemistry Ring */}
       <Float speed={2} rotationIntensity={1} floatIntensity={1.5}>
         <mesh ref={meshRef1} position={[-2.2, 1.2, -1]}>
           <octahedronGeometry args={[0.45]} />
-          <MeshDistortMaterial color="#00f0ff" speed={2} distort={0.2} emissive="#00f0ff" emissiveIntensity={0.6} wireframe />
+          <MeshDistortMaterial color="#10b981" speed={2} distort={0.2} emissive="#10b981" emissiveIntensity={0.6} wireframe />
         </mesh>
       </Float>
 
+      {/* Pharmaceutical Synthesis Dodecahedron */}
       <Float speed={2.5} rotationIntensity={1.5} floatIntensity={2}>
         <mesh ref={meshRef2} position={[2.4, -0.4, -0.5]}>
           <dodecahedronGeometry args={[0.4]} />
-          <meshStandardMaterial color="#9d4edd" wireframe emissive="#9d4edd" emissiveIntensity={0.8} />
+          <meshStandardMaterial color="#00f0ff" wireframe emissive="#00f0ff" emissiveIntensity={0.8} />
         </mesh>
       </Float>
 
+      {/* GenAI Molecular Graph Node */}
       <Float speed={1.8} rotationIntensity={1.2} floatIntensity={1}>
         <mesh ref={meshRef3} position={[2.2, 1.4, -1.2]}>
           <icosahedronGeometry args={[0.35]} />
-          <meshStandardMaterial color="#00ff88" wireframe emissive="#00ff88" emissiveIntensity={0.7} />
+          <meshStandardMaterial color="#ec4899" wireframe emissive="#ec4899" emissiveIntensity={0.7} />
         </mesh>
       </Float>
     </>
   );
 }
 
-// Particle Constellation
-function Particles({ count = 120 }) {
+// Particle Constellation (Drug Molecules & Lab Bio-Aerosol)
+function Particles({ count = 130 }) {
   const pointsRef = useRef<THREE.Points>(null);
 
   const particlesPosition = React.useMemo(() => {
@@ -270,7 +290,7 @@ function Particles({ count = 120 }) {
       </bufferGeometry>
       <pointsMaterial
         size={0.035}
-        color="#38bdf8"
+        color="#10b981"
         transparent
         opacity={0.65}
         sizeAttenuation
@@ -291,10 +311,10 @@ export default function HeroScene({ mousePos }: HeroSceneProps) {
         dpr={[1, 2]}
         gl={{ antialias: true, alpha: true }}
       >
-        <ambientLight intensity={0.7} />
+        <ambientLight intensity={0.75} />
         <directionalLight position={[5, 6, 4]} intensity={1.5} color="#ffffff" />
-        <pointLight position={[-4, 3, -2]} intensity={2.5} color="#00f0ff" />
-        <pointLight position={[4, 2, -1]} intensity={2.2} color="#9d4edd" />
+        <pointLight position={[-4, 3, -2]} intensity={2.5} color="#10b981" />
+        <pointLight position={[4, 2, -1]} intensity={2.2} color="#00f0ff" />
         <spotLight
           position={[0, 6, 2]}
           angle={0.6}
@@ -304,9 +324,9 @@ export default function HeroScene({ mousePos }: HeroSceneProps) {
           castShadow
         />
 
-        <MiniatureCharacter mousePos={mousePos} />
-        <FloatingNodes />
-        <Particles count={150} />
+        <ScientistCharacter mousePos={mousePos} />
+        <MolecularOrbitals />
+        <Particles count={140} />
 
         <ContactShadows
           position={[0, -1.25, 0]}

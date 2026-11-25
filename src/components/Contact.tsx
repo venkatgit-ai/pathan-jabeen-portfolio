@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { Mail, Copy, Check, Linkedin, Github, Send, Sparkles, Terminal } from 'lucide-react';
+import { Mail, Phone, MapPin, Copy, Check, Send, Sparkles, FlaskConical, Languages } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function Contact() {
@@ -8,6 +8,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [messageSent, setMessageSent] = useState(false);
   const email = PORTFOLIO_DATA.personal.contact.email;
+  const phone = PORTFOLIO_DATA.personal.contact.phone;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -16,7 +17,7 @@ export default function Contact() {
       particleCount: 50,
       spread: 60,
       origin: { y: 0.8 },
-      colors: ['#00f0ff', '#9d4edd', '#ffffff']
+      colors: ['#10b981', '#00f0ff', '#ffffff']
     });
     setTimeout(() => setCopied(false), 3000);
   };
@@ -34,23 +35,23 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* Background Ambience */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-t from-cyan-500/10 via-purple-600/5 to-transparent rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-t from-emerald-500/10 via-cyan-600/5 to-transparent rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
             <Sparkles className="w-3.5 h-3.5" />
-            <span className="font-semibold uppercase tracking-wider">07 // Get In Touch</span>
+            <span className="font-semibold uppercase tracking-wider">07 // Connect & Inquiries</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
-            Have an interesting problem to solve?
+            Interested in collaboration or hiring?
           </h2>
 
-          <p className="text-xl sm:text-2xl font-display font-semibold text-cyan-400">
-            Let's build something meaningful.
+          <p className="text-xl sm:text-2xl font-display font-semibold text-emerald-400">
+            Let's innovate together in healthcare and science.
           </p>
         </div>
 
@@ -64,28 +65,28 @@ export default function Contact() {
                   Direct Communications
                 </h3>
                 <p className="text-xs text-slate-400 font-mono">
-                  Reach out for distributed systems engineering, backend architecture, or generative AI roles.
+                  Reach out for pharmaceutical roles, formulation R&D, clinical QC, or health-tech AI projects.
                 </p>
               </div>
 
               {/* Email Copy Card */}
               <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
                 <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
-                  Primary Email
+                  Email Address
                 </span>
                 <div className="flex items-center justify-between gap-2">
                   <a
                     href={`mailto:${email}`}
-                    className="text-sm font-mono text-cyan-400 hover:text-cyan-300 truncate"
+                    className="text-sm font-mono text-emerald-400 hover:text-emerald-300 truncate"
                   >
                     {email}
                   </a>
                   <button
                     onClick={handleCopyEmail}
-                    className="p-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 transition-all shrink-0 active:scale-95"
+                    className="p-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 transition-all shrink-0 active:scale-95"
                     title="Copy email to clipboard"
                   >
-                    {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                    {copied ? <Check className="w-4 h-4 text-emerald-300" /> : <Copy className="w-4 h-4" />}
                   </button>
                 </div>
                 {copied && (
@@ -95,39 +96,30 @@ export default function Contact() {
                 )}
               </div>
 
-              {/* Social Channels */}
+              {/* Phone & Location */}
               <div className="space-y-3">
-                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
-                  Professional Networks
-                </span>
-                
-                <div className="grid grid-cols-2 gap-3">
-                  <a
-                    href={PORTFOLIO_DATA.personal.contact.linkedIn}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2.5 p-3 rounded-xl bg-white/[0.03] border border-white/10 hover:border-cyan-400/40 text-slate-300 hover:text-white transition-all text-xs font-mono group"
-                  >
-                    <Linkedin className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" />
-                    <span>LinkedIn</span>
+                <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 flex items-center space-x-3 text-xs font-mono text-slate-300">
+                  <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <a href={`tel:${phone}`} className="hover:text-emerald-300 transition-colors">
+                    {phone}
                   </a>
+                </div>
 
-                  <a
-                    href={PORTFOLIO_DATA.personal.contact.gitHub}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2.5 p-3 rounded-xl bg-white/[0.03] border border-white/10 hover:border-purple-400/40 text-slate-300 hover:text-white transition-all text-xs font-mono group"
-                  >
-                    <Github className="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform" />
-                    <span>GitHub</span>
-                  </a>
+                <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 flex items-start space-x-3 text-xs font-mono text-slate-300">
+                  <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                  <span>Bhimavaram, West Godavari District, Andhra Pradesh 534201</span>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 flex items-center space-x-3 text-xs font-mono text-slate-300">
+                  <Languages className="w-4 h-4 text-purple-400 shrink-0" />
+                  <span>Telugu (Native) • English (Prof) • Hindi</span>
                 </div>
               </div>
 
               {/* Availability Ribbon */}
               <div className="pt-2 border-t border-white/10 flex items-center space-x-2 text-xs font-mono text-emerald-400">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Currently exploring high-impact software engineering roles</span>
+                <span>B.Pharm 2026 Graduate • Ready for organizational placement</span>
               </div>
             </div>
           </div>
@@ -140,11 +132,11 @@ export default function Contact() {
             >
               <div className="border-b border-white/10 pb-4">
                 <h3 className="text-xl font-display font-bold text-white flex items-center space-x-2">
-                  <Send className="w-4 h-4 text-cyan-400" />
+                  <Send className="w-4 h-4 text-emerald-400" />
                   <span>Send a Direct Message</span>
                 </h3>
                 <p className="text-xs text-slate-400 font-mono mt-1">
-                  Have a project inquiry or engineering opportunity? Leave a note below.
+                  Have an opportunity or pharmaceutical project? Leave a message below.
                 </p>
               </div>
 
@@ -158,8 +150,8 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Jane Doe"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 focus:border-cyan-400 focus:outline-none text-white text-sm font-sans placeholder-slate-600 transition-colors"
+                    placeholder="Recruiter or Colleague Name"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 focus:border-emerald-400 focus:outline-none text-white text-sm font-sans placeholder-slate-600 transition-colors"
                   />
                 </div>
 
@@ -172,8 +164,8 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="jane@company.com"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 focus:border-cyan-400 focus:outline-none text-white text-sm font-sans placeholder-slate-600 transition-colors"
+                    placeholder="name@organization.com"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 focus:border-emerald-400 focus:outline-none text-white text-sm font-sans placeholder-slate-600 transition-colors"
                   />
                 </div>
 
@@ -186,15 +178,15 @@ export default function Contact() {
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Hello Lokendra, I saw your portfolio and would love to discuss..."
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 focus:border-cyan-400 focus:outline-none text-white text-sm font-sans placeholder-slate-600 transition-colors resize-none"
+                    placeholder="Hello Pathan Jabeen, I saw your research portfolio and would like to connect regarding..."
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 focus:border-emerald-400 focus:outline-none text-white text-sm font-sans placeholder-slate-600 transition-colors resize-none"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 px-6 rounded-xl font-mono text-sm font-bold text-slate-900 bg-cyan-400 hover:bg-cyan-300 transition-all shadow-xl shadow-cyan-500/20 active:scale-[0.99] flex items-center justify-center space-x-2"
+                className="w-full py-3.5 px-6 rounded-xl font-mono text-sm font-bold text-slate-900 bg-emerald-400 hover:bg-emerald-300 transition-all shadow-xl shadow-emerald-500/20 active:scale-[0.99] flex items-center justify-center space-x-2"
               >
                 <span>Dispatch Message</span>
                 <Send className="w-4 h-4" />
@@ -202,7 +194,7 @@ export default function Contact() {
 
               {messageSent && (
                 <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono text-center animate-fadeIn">
-                  ✓ Message transmitted successfully! Lokendra will respond promptly.
+                  ✓ Message transmitted! Pathan Jabeen will respond promptly.
                 </div>
               )}
             </form>
@@ -212,14 +204,14 @@ export default function Contact() {
         {/* Footer */}
         <div className="mt-20 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
           <div className="flex items-center space-x-2">
-            <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-            <span>© {new Date().getFullYear()} Lokendra Tyagi. All rights reserved.</span>
+            <FlaskConical className="w-3.5 h-3.5 text-emerald-400" />
+            <span>© {new Date().getFullYear()} Pathan Jabeen. All rights reserved.</span>
           </div>
 
           <div className="flex items-center space-x-4">
-            <span className="text-slate-400">Cinematic 3D Portfolio</span>
+            <span className="text-slate-400">Pharmaceutical Sciences & AI Portfolio</span>
             <span className="text-slate-700">•</span>
-            <a href="#hero" className="hover:text-cyan-400 transition-colors">
+            <a href="#hero" className="hover:text-emerald-400 transition-colors">
               Return to Top ↑
             </a>
           </div>

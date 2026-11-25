@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { Menu, X, Terminal, Sparkles, Send } from 'lucide-react';
+import { Menu, X, FlaskConical, Send } from 'lucide-react';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,15 +39,15 @@ export default function Navbar() {
             href="#"
             className="flex items-center space-x-2.5 group focus:outline-none"
           >
-            <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:scale-105 group-hover:border-cyan-400 transition-all">
-              <Terminal className="w-4 h-4" />
+            <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-105 group-hover:border-emerald-400 transition-all">
+              <FlaskConical className="w-4 h-4" />
             </div>
             <div className="flex flex-col">
-              <span className="font-display font-bold text-base tracking-tight text-white group-hover:text-cyan-400 transition-colors">
-                LOKENDRA TYAGI
+              <span className="font-display font-bold text-base tracking-tight text-white group-hover:text-emerald-400 transition-colors">
+                PATHAN JABEEN
               </span>
               <span className="text-[10px] font-mono text-slate-400 tracking-wider">
-                SOFTWARE ENGINEER
+                B.PHARM & GENAI PIONEER
               </span>
             </div>
           </a>
@@ -58,7 +58,7 @@ export default function Navbar() {
               <a
                 key={item.label}
                 href={item.href}
-                className="px-3 py-1.5 text-xs font-mono text-slate-300 hover:text-cyan-400 rounded-lg hover:bg-white/[0.04] transition-all"
+                className="px-3 py-1.5 text-xs font-mono text-slate-300 hover:text-emerald-400 rounded-lg hover:bg-white/[0.04] transition-all"
               >
                 {item.label}
               </a>
@@ -69,9 +69,9 @@ export default function Navbar() {
           <div className="hidden sm:flex items-center space-x-3">
             <a
               href="#contact"
-              className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-mono font-medium text-slate-900 bg-cyan-400 hover:bg-cyan-300 transition-all shadow-lg shadow-cyan-500/20 active:scale-95"
+              className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-mono font-medium text-slate-900 bg-emerald-400 hover:bg-emerald-300 transition-all shadow-lg shadow-emerald-500/20 active:scale-95"
             >
-              <span>Let's Connect</span>
+              <span>Connect</span>
               <Send className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -95,7 +95,7 @@ export default function Navbar() {
               key={item.label}
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-sm font-mono text-slate-300 hover:text-cyan-400 hover:bg-white/[0.05]"
+              className="block px-3 py-2 rounded-lg text-sm font-mono text-slate-300 hover:text-emerald-400 hover:bg-white/[0.05]"
             >
               {item.label}
             </a>
@@ -104,9 +104,9 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center px-4 py-2.5 rounded-xl text-xs font-mono font-medium text-slate-900 bg-cyan-400"
+              className="block w-full text-center px-4 py-2.5 rounded-xl text-xs font-mono font-medium text-slate-900 bg-emerald-400"
             >
-              Let's Connect
+              Connect
             </a>
           </div>
         </div>
