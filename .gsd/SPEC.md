@@ -1,33 +1,53 @@
-# SPEC.md — Project Specification
+# SPEC.md — Cinematic Interactive 3D Portfolio Specification
 
 > **Status**: `FINALIZED`
-> **Project**: Modern 3D Interactive Portfolio
-> **Type**: Web Application
+> **Owner**: Lokendra Tyagi
+> **Title**: Software Engineer | Full Stack & GenAI
 
-## Vision
-A high-performance, visually stunning 3D interactive portfolio website built for creative developers and modern engineers. The site features interactive 3D WebGL scenes, particle physics, glassmorphic UI components, smooth scroll-driven storytelling, and responsive layouts that look exceptional across mobile, tablet, and desktop devices.
+## 1. Vision & Core Philosophy
+A cinematic, production-grade 3D personal universe and interactive portfolio for Lokendra Tyagi. The site communicates high engineering caliber, deep technical depth, and creative web mastery through an interactive miniature 3D avatar, an animated floating 3D identity card, an interactive periodic table of technical skills, scroll-triggered experience timelines, and metric-driven impact counters. The design is tuned for cinematic recording (Instagram Reel ready) and 60fps performance across devices.
 
-## Goals
-1. **Interactive 3D Experience**: Deliver smooth 60fps WebGL/Three.js interactive visuals (interactive floating geometry, particle field, mouse-reactive lighting).
-2. **Comprehensive Sections**: Provide Hero, About Me & Skills showcase, 3D Project cards with live demo links, Experience timeline, and a functional Contact modal/form.
-3. **Modern Technical Architecture**: Build with React + Vite + TypeScript, Tailwind CSS, Lucide React icons, and Three.js / React Three Fiber for fast build times and zero lag.
-4. **Performance & Accessibility**: Ensure fast load times with progressive asset loading, device pixel ratio scaling, reduced motion toggles, and mobile-friendly touch controls.
+## 2. STRICT COMPANY CONFIDENTIALITY DIRECTIVE
+- **NEVER** mention current employer's name anywhere.
+- **NEVER** mention previous employer's name anywhere.
+- **NEVER** display company logos, company names, organization names, or employer branding.
+- **NEVER** use the term or name "eGov Foundation" anywhere in code, UI, comments, or metadata.
+- Represent work experience strictly with generic titles: "Software Engineer", "Software Engineering Experience", "Professional Experience".
+- Focus 100% on architecture, technologies, engineering contributions, and measurable metrics.
 
-## Non-Goals (Out of Scope)
-- Complex multi-player backend or game mechanics.
-- Heavy uncompressed 3D models (>10MB) that degrade mobile performance.
-- Server-side database authentication (keep client-side static deployable to Vercel/Netlify/GitHub Pages).
+## 3. Key Architectural Sections & Components
+1. **Hero Section (Cinematic Opening)**:
+   - 3D Canvas featuring an animated miniature 3D male avatar with idle breathing, mouse tracking, and speech animations.
+   - Synchronized typing/speech bubble:
+     *"Hey, I'm Lokendra Tyagi. A Software Engineer passionate about building scalable systems, intelligent applications, and products that solve real-world problems. I work across backend engineering, distributed systems, and Generative AI. Welcome to my digital space."*
+   - Editorial Typography:
+     - `LOKENDRA TYAGI`
+     - `Software Engineer | Full Stack & GenAI`
+     - `Building scalable systems. Engineering intelligent solutions.`
+   - CTAs: `Explore My Work` and `Let's Connect`.
+2. **Animated 3D Digital Identity Card**:
+   - Floating interactive badge with 3D cursor tilt, interactive card flip, and holographic glassmorphism.
+3. **About Me**:
+   - 3 years of microservices, distributed systems, and GenAI experience across 6 core pillars.
+4. **Technical Skills — Interactive Periodic Table**:
+   - Chemistry-style grid elements with atomic symbols, numbers, glowing category filters, and detail modals.
+5. **Professional Experience**:
+   - June 2023 – Present: Software Engineer (Notification platform, GenAI agent, DLQ reliability, DB optimization).
+   - May 2022 – July 2022: Software Engineering Intern (Licensing modularization, API upgrades, service discovery).
+6. **Featured Projects**:
+   - Project 1: AI-Powered Multi-Agent Data Query & Analytics Platform.
+   - Project 2: Works Management Platform.
+7. **Impact Metrics**:
+   - 90% Manual retrieval reduction, 30% DB load reduction, 25% latency reduction, 1.4x throughput increase, Days to Minutes setup time.
+8. **Education**:
+   - IIT (BHU) Varanasi, B.Tech Chemical Engineering (2019-2023), CGPA: 8.00/10.
+9. **Contact & Socials**:
+   - Email: `lokendratyagi212@gmail.com` with copy-to-clipboard toast.
+   - LinkedIn: `https://linkedin.com/in/lokendra-tyagi`.
+   - GitHub: `https://github.com/lokendratyagi601`.
 
-## Users
-- Potential clients, tech recruiters, engineering managers, and fellow developers exploring skills, past work, and contact details.
-
-## Constraints
-- Must run smoothly on modern browsers (Chrome, Edge, Safari, Firefox).
-- Must gracefully fall back on low-tier hardware without WebGL errors.
-- Clean code architecture following GSD atomic commit standards and CodeRabbit quality guidelines.
-
-## Success Criteria
-- [ ] Fast initial load (<1.5s on desktop).
-- [ ] 60 FPS 3D rendering on standard desktop hardware.
-- [ ] Fully responsive layout from 320px to 4K displays.
-- [ ] Verified zero lint and TypeScript errors with passing build (`npm run build`).
+## 4. Tech Stack
+- React 18 / 19 + Vite + TypeScript
+- Three.js + @react-three/fiber + @react-three/drei
+- Tailwind CSS + Lucide React + Canvas Confetti / Particles
+- Framer Motion for scroll reveals and layout animations

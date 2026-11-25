@@ -11,3 +11,4 @@
 - [x] Project initialized with GSD workflow
 - [x] SPEC.md and ROADMAP.md defined
 - [x] Git repository created
+
