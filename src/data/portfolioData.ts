@@ -2,10 +2,11 @@ export interface SkillItem {
   id: string;
   symbol: string;
   name: string;
-  category: 'analytical' | 'pharmaceutics' | 'regulatory' | 'ai_digital' | 'industrial';
+  category: 'analytical' | 'pharmaceutics' | 'regulatory' | 'ai_digital';
   categoryLabel: string;
   atomicNumber: number;
   description: string;
+  resumeSource: string;
   color: string;
 }
 
@@ -97,35 +98,101 @@ export const PORTFOLIO_DATA = {
   },
 
   skills: [
-    // Analytical & Lab Techniques
-    { id: "uvvis", symbol: "Uv", name: "UV-Vis Spectroscopy", category: "analytical", categoryLabel: "Analytical Techniques", atomicNumber: 1, description: "Absorption spectra, lambda max determination, API concentration assays", color: "#00f0ff" },
-    { id: "titration", symbol: "Ti", name: "Acid-Base Titration", category: "analytical", categoryLabel: "Analytical Techniques", atomicNumber: 2, description: "Volumetric stoichiometry, stoichiometric endpoint detection, API assaying", color: "#38bdf8" },
-    { id: "greensolvent", symbol: "Gs", name: "Green Solvents", category: "analytical", categoryLabel: "Analytical Techniques", atomicNumber: 3, description: "Eco-friendly extraction, aqueous green tea solvent systems", color: "#10b981" },
-    { id: "quant", symbol: "Qe", name: "Quantitative Assay", category: "analytical", categoryLabel: "Analytical Techniques", atomicNumber: 4, description: "Statistical reproducibility, dilution calculations, analytical standard curves", color: "#06b6d4" },
+    // 1. Analytical & Lab Techniques (Directly from Resume: Technical Skills & Projects)
+    {
+      id: "uvvis",
+      symbol: "Uv",
+      name: "UV-Visible Spectrophotometry",
+      category: "analytical",
+      categoryLabel: "Analytical Techniques",
+      atomicNumber: 1,
+      description: "Absorption spectra analysis, lambda max determination, and quantitative concentration assays for pharmaceuticals per standard protocols.",
+      resumeSource: "Technical Skills",
+      color: "#00f0ff"
+    },
+    {
+      id: "greensolvent",
+      symbol: "Gs",
+      name: "Green Solvent Titrations",
+      category: "analytical",
+      categoryLabel: "Green Analytical Chemistry",
+      atomicNumber: 2,
+      description: "Eco-friendly quantification of Ibuprofen utilizing aqueous green tea extracts to replace toxic organic solvents (ethanol) in acid-base titrations.",
+      resumeSource: "Project Work (Ibuprofen Titration)",
+      color: "#10b981"
+    },
 
-    // Pharmaceutics & Formulation
-    { id: "tabletcomp", symbol: "Tc", name: "Tablet Compression", category: "pharmaceutics", categoryLabel: "Pharmaceutics & Formulation", atomicNumber: 5, description: "Granulation, compression force parameters, disintegration & dissolution testing", color: "#a855f7" },
-    { id: "herbosynth", symbol: "Hs", name: "Herbo-Synthetic Formulations", category: "pharmaceutics", categoryLabel: "Pharmaceutics & Formulation", atomicNumber: 6, description: "Synergistic botanical actives combined with pharmaceutical excipients", color: "#9333ea" },
-    { id: "antimicrobial", symbol: "Am", name: "Antimicrobial Formulations", category: "pharmaceutics", categoryLabel: "Pharmaceutics & Formulation", atomicNumber: 7, description: "Oral pathogen inhibition, antiseptic stabilization, mouthwash development", color: "#c084fc" },
-    { id: "pharmchem", symbol: "Pc", name: "Pharmaceutical Chemistry", category: "pharmaceutics", categoryLabel: "Pharmaceutics & Formulation", atomicNumber: 8, description: "Structure-activity relationships, organic synthesis, functional group reactivity", color: "#7c3aed" },
+    // 2. Pharmaceutics & Formulation (Directly from Resume: Projects & Technical Skills)
+    {
+      id: "herbosynth",
+      symbol: "Hs",
+      name: "Herbo-Synthetic Formulations",
+      category: "pharmaceutics",
+      categoryLabel: "Pharmaceutics & Formulation",
+      atomicNumber: 3,
+      description: "Design and compounding of oral mouthwash formulations combining antiseptic and soothing botanical ingredients to reduce oral microbial count.",
+      resumeSource: "Project Work (Mouthwash Formulation)",
+      color: "#a855f7"
+    },
+    {
+      id: "tabletcomp",
+      symbol: "Tc",
+      name: "Tablet Compression Workflows",
+      category: "pharmaceutics",
+      categoryLabel: "Pharmaceutics & Formulation",
+      atomicNumber: 4,
+      description: "Basic industrial tablet compression workflows, granulation parameters, and physical evaluation checks (hardness, friability, disintegration).",
+      resumeSource: "Technical Skills",
+      color: "#c084fc"
+    },
 
-    // Regulatory & Quality Standards
-    { id: "gmp", symbol: "Gm", name: "GMP Knowledge", category: "regulatory", categoryLabel: "Regulatory & Quality", atomicNumber: 9, description: "Good Manufacturing Practices, batch manufacturing records, cleanroom compliance", color: "#f59e0b" },
-    { id: "glp", symbol: "Gl", name: "GLP Protocols", category: "regulatory", categoryLabel: "Regulatory & Quality", atomicNumber: 10, description: "Good Laboratory Practice, instrument calibration, documentation rigor", color: "#fbbf24" },
-    { id: "qc", symbol: "Qc", name: "Quality Control", category: "regulatory", categoryLabel: "Regulatory & Quality", atomicNumber: 11, description: "Sample testing, stability studies, impurity profile verification", color: "#d97706" },
-    { id: "biolab", symbol: "Bl", name: "Bio-Lab Operations", category: "regulatory", categoryLabel: "Regulatory & Quality", atomicNumber: 12, description: "Industrial testing environments, safety data sheets, containment protocols", color: "#b45309" },
+    // 3. Regulatory & Quality Standards (Directly from Resume: Technical Skills & Industrial Training)
+    {
+      id: "gmp",
+      symbol: "Gm",
+      name: "GMP Knowledge",
+      category: "regulatory",
+      categoryLabel: "Regulatory Compliance",
+      atomicNumber: 5,
+      description: "Good Manufacturing Practices compliance, batch manufacturing records (BMR), cleanroom operations, contamination prevention, and quality protocols.",
+      resumeSource: "Technical Skills",
+      color: "#f59e0b"
+    },
+    {
+      id: "teenabio",
+      symbol: "Tb",
+      name: "Industrial QC Testing",
+      category: "regulatory",
+      categoryLabel: "Industrial Laboratory Practice",
+      atomicNumber: 6,
+      description: "Underwent intensive one-month industrial training at Teena Bio Laboratories (Hyderabad) covering commercial QC assays, testing protocols, and SOP compliance.",
+      resumeSource: "Certifications & Training (May 2026)",
+      color: "#fbbf24"
+    },
 
-    // AI & Digital Health
-    { id: "genai", symbol: "Ai", name: "Generative AI", category: "ai_digital", categoryLabel: "Digital & AI Healthcare", atomicNumber: 13, description: "Certified GenAI Pioneer, LLM prompting for scientific synthesis & research", color: "#ec4899" },
-    { id: "lovable", symbol: "Lv", name: "Lovable App Dev", category: "ai_digital", categoryLabel: "Digital & AI Healthcare", atomicNumber: 14, description: "Full-stack rapid web and mobile app development for healthcare workflows", color: "#f43f5e" },
-    { id: "prompteng", symbol: "Pe", name: "AI Prompt Engineering", category: "ai_digital", categoryLabel: "Digital & AI Healthcare", atomicNumber: 15, description: "Context engineering, automated research extraction, clinical workflow prompts", color: "#fb7185" },
-    { id: "healthtech", symbol: "Ht", name: "Health-Tech Design", category: "ai_digital", categoryLabel: "Digital & AI Healthcare", atomicNumber: 16, description: "Interactive patient portals, medical calculators, dosage conversion tools", color: "#fda4af" },
-
-    // Industrial & Communication
-    { id: "radio", symbol: "Ra", name: "Broadcast Media", category: "industrial", categoryLabel: "Professional & Media", atomicNumber: 17, description: "Radio Vishnu 90.4 CR certified communicator, public health awareness", color: "#6366f1" },
-    { id: "comms", symbol: "Cs", name: "Scientific Communication", category: "industrial", categoryLabel: "Professional & Media", atomicNumber: 18, description: "Academic presentations, research documentation, cross-functional reporting", color: "#818cf8" },
-    { id: "teamwork", symbol: "Tw", name: "Team Leadership", category: "industrial", categoryLabel: "Professional & Media", atomicNumber: 19, description: "Leading research cohorts, project milestone tracking, resource coordination", color: "#4f46e5" },
-    { id: "bilingual", symbol: "Ln", name: "Trilingual Fluency", category: "industrial", categoryLabel: "Professional & Media", atomicNumber: 20, description: "Fluent in English (Professional), Telugu (Native), and Hindi", color: "#4338ca" }
+    // 4. Digital & Generative AI (Directly from Resume: Certifications & Technical Skills)
+    {
+      id: "genai",
+      symbol: "Ai",
+      name: "Generative AI Excellence",
+      category: "ai_digital",
+      categoryLabel: "Digital & AI Healthcare",
+      atomicNumber: 7,
+      description: "Certified GenAI Pioneer (April 2026), applying Generative AI concepts, prompt engineering, and LLM synthesis to healthcare research and workflows.",
+      resumeSource: "Certifications (April 2026)",
+      color: "#ec4899"
+    },
+    {
+      id: "lovable",
+      symbol: "Lv",
+      name: "App Development (Lovable)",
+      category: "ai_digital",
+      categoryLabel: "Digital Health-Tech",
+      atomicNumber: 8,
+      description: "Rapid prototyping and deployment of full-stack healthcare web applications, interactive medical calculators, and digital tools using Lovable.",
+      resumeSource: "Technical Skills",
+      color: "#f43f5e"
+    }
   ] as SkillItem[],
 
   experience: [
